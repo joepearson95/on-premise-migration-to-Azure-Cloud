@@ -162,7 +162,7 @@
                         "name": "flask-app",
                         "properties": {
                             "priority": 1010,
-                            "protocol": "Any",
+                            "protocol": "*",
                             "access": "Allow",
                             "direction": "Inbound",
                             "sourceAddressPrefix": "*",
