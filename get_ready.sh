@@ -1,14 +1,11 @@
-sudo apt-get update
-echo y | command
-sudo apt-get upgrade
-echo y | command
-sudo apt-get install python3-venv
-echo y | command
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install python3-venv
 
 cd cloud_site
 
 python3 -m venv dissVM
 source dissVM/bin/activate
-pip install -r requirements
+pip install flask
 export FLASK_APP=application.py
 flask run
