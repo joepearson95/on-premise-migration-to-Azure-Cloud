@@ -1,6 +1,9 @@
 sudo apt-get update
+echo y | command
 sudo apt-get upgrade
+echo y | command
 sudo apt-get install python3-venv
+echo y | command
 
 cd cloud_site
 

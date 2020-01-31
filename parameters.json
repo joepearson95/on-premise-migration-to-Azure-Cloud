@@ -15,7 +15,7 @@
       "value": ""
     },
     "dnsLabelPrefix": {
-      "value": "[toLower(concat('dissvm')]"
+      "value": "[toLower(concat('dissvm-', uniqueString(resourceGroup().id)))]"
     },
     "ubuntuOSVersion": {
       "value": "18.04-LTS"
