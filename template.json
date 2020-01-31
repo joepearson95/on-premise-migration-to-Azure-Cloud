@@ -157,17 +157,7 @@
                             "destinationAddressPrefix": "*",
                             "destinationPortRange": "22"
                         }
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "apiVersion": "2019-02-01",
-            "name": "[parameters('networkSecurityGroupName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "securityRules": [
+                    },
                     {
                         "name": "flask-app",
                         "properties": {
