@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "value": "dissVM"
+    },
+    "adminUsername": {
+      "value": ""
+    },
+    "authenticationType": {
+      "value": "password"
+    },
+    "adminPasswordOrKey": {
+      "value": ""
+    },
+    "dnsLabelPrefix": {
+      "value": "[toLower(concat('dissvm-', uniqueString(resourceGroup().id)))]"
+    },
+    "ubuntuOSVersion": {
+      "value": "18.04-LTS"
+    },
+    "location": {
+      "value": "[resourceGroup().location]"
+    },
+    "VmSize": {
+      "value": "Standard_B2s"
+    },
+    "virtualNetworkName": {
+      "value": "vNet"
+    },
+    "subnetName": {
+      "value": "Subnet"
+    },
+    "networkSecurityGroupName": {
+      "value": "SecGroupNet"
+    }
+  }
+}
