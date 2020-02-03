@@ -10,5 +10,5 @@ cd cloud_site
 python3 -m venv dissVM
 source dissVM/bin/activate
 pip install -r requirements.txt
-export FLASK_APP=application.py
+export FLASK_APP=run.py
 flask run -h 0.0.0.0

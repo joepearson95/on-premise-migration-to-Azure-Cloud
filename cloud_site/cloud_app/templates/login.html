@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>Hello</title>
+	</head>
+	<body>
+		<form method="POST" action="">
+			{{ form.hidden_tag() }}
+			{{ form.username.label() }}
+			{{ form.username() }}
+			{{ form.submit() }}
+		</form>
+	</body>
+</html>
