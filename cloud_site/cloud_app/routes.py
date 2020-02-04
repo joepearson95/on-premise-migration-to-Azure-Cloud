@@ -47,3 +47,8 @@ def login():
 def logout():
 	logout_user()
 	return redirect(url_for('home'))
+
+@app.route('/database')
+@login_required
+def database():
+	return render_template('database.html')
