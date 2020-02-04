@@ -1,8 +1,26 @@
-<html>
-	<head>
-		<title>Home</title>
-	</head>
-	<body>
-		<h1>Hello!</h1>
-	</body>
-</html>
+{% extends "layout.html" %}
+{% block title %} Home {% endblock %}
+{% block content %}
+	<div class="col-md-8 mb-5">
+		<h2>What We Do</h2>
+		<hr> 
+		<a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
+	</div>
+	<div class="col-md-4 mb-5">
+		<h2>Contact Us</h2>
+		<hr>
+		<address>
+			<strong>Start Bootstrap</strong>
+			<br>3481 Melrose Place
+			<br>Beverly Hills, CA 90210
+			<br>
+		</address>
+		<address>
+			<abbr title="Phone">P:</abbr>
+			(123) 456-7890
+			<br>
+			<abbr title="Email">E:</abbr>
+			<a href="mailto:#">name@example.com</a>
+		</address>
+	</div>
+{% endblock %}
