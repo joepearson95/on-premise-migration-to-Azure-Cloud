@@ -7,3 +7,5 @@ sudo apt-get -y install git
 sudo apt-get -y install python-setuptools python-dev build-essential
 sudo easy_install pip
 sudo pip install flask
+
+sed -i '15,16 s/^/#/' cloud_app/models.py
