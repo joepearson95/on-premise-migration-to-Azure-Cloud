@@ -5,90 +5,45 @@
 {% block content %}
 <div class="row justify-content-md-center">
     <div class="col-md-auto mb-5">
-        <form method="POST" action="">
+        <form>
             <div class="input-group">
-                <input type="text" name="user" placeholder="Search the database!" class="form-control" style="width: 100%">    
-                <button type="submit" class="btn btn-success input-group-addon"><i class="fa fa-search"></i></button>
+                <!-- {{ form.searchBar(class="form-control") }}
+                {{ form.searchBtn(class="btn btn-success", id="submitBtn") }} -->
+                <input type="text" name="user" id="searchTxt" class="form-control" style="width: 100%">    
+                <button type="submit" class="btn btn-success input-group-addon" id="submitBtn"><i class="fa fa-search"></i></button>
             </div>
         </form>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-        </div>
-    </div>
+<div class="row" id='searchResult'>
 </div>
 <!-- /.row -->
-<div class="row">
-    <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 mb-5">
-        <div class="card h-100">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- /.row -->
+{% endblock %}
+{% block js %}
+<script>
+    $(function() {
+        $('#submitBtn').click(function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: '/databaseSearch',
+                data: {
+                    searchText: $('#searchTxt').val(),
+                },
+                type: 'POST',
+                success: function(data) {
+                    //console.log(data[0].username);
+                    var html = '';
+                    //$.each(data, function(i,v) {
+                    html += '<div class="col-md-4 mb-5"><div class="card h-100"><div class="card-body"><h4 class="card-title">' + data[0].username + '</h4><p class="card-text">' + data[0].username + '</p></div><div class="card-footer"><a href="#" class="btn btn-primary">Find Out More!</a></div></div></div>';
+                    //});
+                    $('#searchResult').append(html);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            })
+        });
+    });
+</script>
 {% endblock %}

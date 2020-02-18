@@ -1,9 +1,10 @@
 from datetime import datetime
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, jsonify
 from cloud_app import app, db, bcrypt
-from cloud_app.forms import RegistrationForm, LoginForm
+from cloud_app.forms import RegistrationForm, LoginForm, DatabaseSearchForm
 from cloud_app.models import User
 from flask_login import login_user, current_user, logout_user, login_required
+from pprint import pprint
 
 @app.context_processor
 def inject_now():
@@ -48,7 +49,27 @@ def logout():
 	logout_user()
 	return redirect(url_for('home'))
 
-@app.route('/database')
+@app.route('/database', methods=['GET'])
 @login_required
 def database():
-	return render_template('database.html')
+	form = DatabaseSearchForm()
+	return render_template('database.html', form=form)
+
+@app.route('/databaseSearch', methods=['POST'])
+@login_required
+def databasesearch():
+	search = request.form['searchText']
+	databaseSearch = User.query.filter_by(username=search).all()
+	if databaseSearch:
+		def serialize_message(msg):
+			return {
+				# carry on the below stuff but for obviously more fields.
+				"username": msg.username,
+				# "field_int": int(msg.field_int),
+				# "field_dt": msg.field_dt.strftime("%Y%m%d"),
+			}
+
+		records = [serialize_message(z) for z in databaseSearch]
+		return jsonify(records)
+	else:
+		return jsonify("no user")
