@@ -4,7 +4,6 @@ from cloud_app import app, db, bcrypt
 from cloud_app.forms import RegistrationForm, LoginForm, DatabaseSearchForm
 from cloud_app.models import User
 from flask_login import login_user, current_user, logout_user, login_required
-from pprint import pprint
 
 @app.context_processor
 def inject_now():
@@ -63,10 +62,9 @@ def databasesearch():
 	if databaseSearch:
 		def serialize_message(msg):
 			return {
-				# carry on the below stuff but for obviously more fields.
+				"id": msg.id,
 				"username": msg.username,
-				# "field_int": int(msg.field_int),
-				# "field_dt": msg.field_dt.strftime("%Y%m%d"),
+				"created_at": msg.created_at.strftime("%c"),
 			}
 
 		records = [serialize_message(z) for z in databaseSearch]

@@ -7,8 +7,6 @@
     <div class="col-md-auto mb-5">
         <form>
             <div class="input-group">
-                <!-- {{ form.searchBar(class="form-control") }}
-                {{ form.searchBtn(class="btn btn-success", id="submitBtn") }} -->
                 <input type="text" name="user" id="searchTxt" class="form-control" style="width: 100%">    
                 <button type="submit" class="btn btn-success input-group-addon" id="submitBtn"><i class="fa fa-search"></i></button>
             </div>
@@ -32,11 +30,9 @@
                 },
                 type: 'POST',
                 success: function(data) {
-                    //console.log(data[0].username);
+                    // console.log(data);
                     var html = '';
-                    //$.each(data, function(i,v) {
-                    html += '<div class="col-md-4 mb-5"><div class="card h-100"><div class="card-body"><h4 class="card-title">' + data[0].username + '</h4><p class="card-text">' + data[0].username + '</p></div><div class="card-footer"><a href="#" class="btn btn-primary">Find Out More!</a></div></div></div>';
-                    //});
+                    html += '<div class="col-md-4 mb-5"><div class="card h-100"><div class="card-body"><h4 class="card-title">' + data[0].username + '</h4><p class="card-text">' + data[0].created_at + '</p></div><div class="card-footer"><a href="' + data[0].id +'" class="btn btn-primary">Find Out More!</a></div></div></div>';
                     $('#searchResult').append(html);
                 },
                 error: function(err) {
