@@ -13,7 +13,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.1
 jsonschema==3.2.0
 MarkupSafe==1.1.1
-pkg-resources==0.0.0
+#pkg-resources==0.0.0
 pycparser==2.19
 pyrsistent==0.15.7
 PyYAML==5.3

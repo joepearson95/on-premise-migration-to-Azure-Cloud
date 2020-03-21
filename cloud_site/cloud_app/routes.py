@@ -57,8 +57,9 @@ def database():
 @app.route('/databaseSearch', methods=['POST'])
 @login_required
 def databasesearch():
-	search = request.form['searchText']
-	databaseSearch = User.query.filter_by(username=search).all()
+	searchText = request.form['searchText']
+	search = "%{}%".format(searchText) 
+	databaseSearch = User.query.filter(User.username.like(search)).all()
 	if databaseSearch:
 		def serialize_message(msg):
 			return {
