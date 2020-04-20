@@ -1,4 +1,4 @@
-#!/home/joe/Documents/sites/on-premise-migration-to-Azure-Cloud/cloud_site/dissVM/bin/python3
+#!/home/joe/on-premise-migration-to-Azure-Cloud/cloud_site/dissVM/bin/python3
 
 # -*- coding: utf-8 -*-
 import re
